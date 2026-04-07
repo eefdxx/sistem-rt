@@ -1,59 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏡 Sistem Informasi Manajemen RT (Sistem RT)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Selamat datang di repositori **Sistem RT**! 🚀  
+Aplikasi ini dirancang khusus untuk mempermudah pengurus Rukun Tetangga (RT) dalam mengelola data warga, administrasi, keuangan (iuran), hingga pelaporan lingkungan secara digital dan terstruktur.
 
-## About Laravel
+> **Pendekatan Development:** Saat ini, fokus utama tim adalah menyelesaikan **Backend & Logika (Backend-First)**. Tampilan antarmuka (Frontend) saat ini berfungsi dengan baik, namun akan dipoles menjadi lebih cantik dan dinamis setelah seluruh logika backend selesai.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🌟 Progres Kita Saat Ini (Update Terbaru!)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Project ini sedang berjalan dengan lancar! Buat teman-teman yang baru bergabung, berikut adalah status progres yang sudah berhasil kita capai:
 
-## Learning Laravel
+### ✅ FITUR YANG SUDAH SELESAI (Bisa Langsung Dites!)
+1. **Sistem Login & Keamanan Dasar:** Otentikasi menggunakan template Laravel standard.
+2. **Dashboard Admin:** Menampilkan statistik total warga, total keluarga, dan laporan dengan angka real-time.
+3. **Manajemen Keluarga:**
+   - ➕ Tambah, 📝 Edit, 👁️ Detail, dan 🗑️ Hapus Data Keluarga (KK, Alamat, RT/RW, Kode Pos).
+   - 🛡️ Validasi input anti-error (RT, RW, Kode Pos, Nomor KK sudah divalidasi ketat hanya menerima angka).
+4. **Manajemen Warga:**
+   - ➕ Tambah, 📝 Edit, 👁️ Detail, dan 🗑️ Hapus Data Warga.
+   - 🔗 Canggih: Menghubungkan secara otomatis data Kepala Keluarga di tabel `Keluarga` dan tabel `Warga`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🚧 SEDANG DALAM PENGERJAAN / BERIKUTNYA (To-Do List)
+Teman-teman yang mau berkontribusi, bisa langsung ambil bagian fitur-fitur ini:
+- [ ] **Modul Iuran & Pembayaran:** Mencatat iuran bulanan warga, kas RT, rekap otomatis.
+- [ ] **Modul Kegiatan:** Menjadwalkan rapat RT, kerja bakti, dsb.
+- [ ] **Modul Pelaporan Warga:** Fasilitas untuk warga melaporkan fasilitas rusak, keamanan, dll.
+- [ ] **Dashboard Khusus Warga:** Halaman untuk warga melihat tagihan iuran dan pengumuman.
+- [ ] **Pengumuman & Surat Pengantar:** Generator surat pengantar RT otomatis.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🛠️ Persyaratan Sistem (Prerequisites)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Sebelum mulai menjalankan project ini dari *Nol*, pastikan teman-teman sudah menginstal *tools* wajib berikut di laptop/komputer:
 
-### Premium Partners
+1. **XAMPP / Laragon** (Pastikan PHP minimal versi 8.2 & MySQL nyala)
+2. **Composer** (Untuk menginstall dependencies/library backend PHP)
+3. **Node.js & NPM** (Untuk mengolah tampilan frontend / Tailwind CSS)
+4. **Git** (Untuk menarik dan mengirim perubahan kode)
+5. **Code Editor / IDE**, sangat disarankan menggunakan **Visual Studio Code (VSCode)**.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🚀 Panduan Panduan Menjalankan Project dari 0 (Setup Awal)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Buat teman-teman yang baru pertama kali *clone* project ini, ikuti langkah ini pelan-pelan secara berurutan. Di setting cukup **sekali** saja di awal:
 
-## Code of Conduct
+### 1. Clone Project
+Buka Terminal/Command Prompt (CMD) di folder tujuan (misal di dalam folder `htdocs`), lalu ketik:
+```bash
+git clone https://github.com/[URL_REPO_KITA]/sistem-rt.git
+cd sistem-rt
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Install Library Backend & Frontend
+Jalankan dua perintah ini berurutan untuk mendownload semua *library* bawaan framework:
+```bash
+composer install
+npm install
+```
 
-## Security Vulnerabilities
+### 3. Konfigurasi Environment (Database)
+Laravel butuh file konfigurasi bawaan. *Copy* file `.env`.
+```bash
+cp .env.example .env
+```
+Lalu **Buka file `.env`** dan ubah konfigurasi database-nya (biasanya baris ke-22):
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sistem_rt   <-- (Pastikan teman-teman buat database kosong bernama 'sistem_rt' di phpMyAdmin dulu ya!)
+DB_USERNAME=root
+DB_PASSWORD=            <-- (Kosongkan bila menggunakan XAMPP standar)
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Setup Key & Database
+Jika database sudah dibuat di phpMyAdmin, mari kita tanam (migrate) tabel-tabelnya ke database dan generate app key:
+```bash
+php artisan key:generate
+php artisan migrate
+```
+*(Opsional: Jika nanti kita sudah punya `RoleSeeder` atau data dummy, teman-teman bisa jalankan `php artisan db:seed`)*
 
-## License
+### 5. Jalankan Aplikasi! 🎉
+Kita butuh menghidupkan **2 terminal/CMD tersendiri**. 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Terminal 1 (Menjalankan server PHP/Backend):**
+```bash
+php artisan serve
+```
+
+**Terminal 2 (Menjalankan server Frontend/Tailwind agar tampilan tidak hancur):**
+Buka terminal baru di folder yang sama, lalu jalankan:
+```bash
+npm run dev
+```
+
+Buka Browser dan ketik URL:
+👉 **`http://localhost:8000`**
+
+---
+
+## 📚 Struktur Kode (Cheat Sheet Buat Lanjutin)
+
+Biar gak bingung nyari file, ini contekan folder yang paling sering dibongkar pas kita ngoding:
+
+- 🗄️ **Database (Tabel & Kolom):** Cek di folder `database/migrations/`
+- 🧠 **Logika Data Backend:** Cek folder `app/Http/Controllers/` (Cth: `KeluargaController.php`)
+- 🎨 **Tampilan Web (HTML/Blade):** Cek folder `resources/views/` (Disusun rapi per entitas misal `admin/keluarga`)
+- 🚦 **Jalur / URL (Routing):** Cek file `routes/web.php`
+- ✅ **Validasi Form Anti Error:** Cek file `app/Http/Requests/`
+
+---
+
+## 🤝 Cara Berkontribusi (Aturan Main)
+
+Supaya kerja sama tim enak dan kode gak bentrok:
+1. Usahakan **Pull** dulu sebelum mulai ngoding: `git pull origin main`
+2. Jangan asal merubah kode migrasi (`database/migrations`) yang *sudah di-push* ke public. Kalau ada yang mau diedit, buat file migrasi baru (alter table).
+3. Beritahu teman di grup kalau mau mengerjakan suatu fitur agar tidak kerja *double*
