@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class TanggapanLaporan extends Model
+{
+    use HasFactory;
+
+    protected $table = 'tanggapan_laporan';
+
+    protected $fillable = [
+        'laporan_id',
+        'user_id',
+        'isi_tanggapan',
+        'status_setelah_tanggapan',
+    ];
+
+    public function laporan()
+    {
+        return $this->belongsTo(Laporan::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
