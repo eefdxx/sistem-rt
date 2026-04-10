@@ -9,8 +9,8 @@ class JenisIuranController extends Controller
 {
     public function index()
     {
-        $jenis_iurans = JenisIuran::latest()->paginate(10);
-        return view('admin.jenis-iuran.index', compact('jenis_iurans'));
+        $jenisIurans = JenisIuran::latest()->paginate(10);
+        return view('admin.jenis-iuran.index', compact('jenisIurans'));
     }
 
     public function create()

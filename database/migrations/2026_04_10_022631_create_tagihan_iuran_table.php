@@ -14,9 +14,9 @@ return new class extends Migration
             $table->foreignId('jenis_iuran_id')->constrained('jenis_iuran');
             $table->integer('periode_bulan')->nullable();
             $table->integer('periode_tahun');
-            $table->decimal('nominal', 15, 2);
+            $table->decimal('nominal_tagihan', 15, 2);
             $table->date('jatuh_tempo')->nullable();
-            $table->string('status')->default('belum_bayar'); // belum_bayar, proses, lunas, batal
+            $table->string('status_pembayaran')->default('belum_bayar'); // belum_bayar, proses, lunas, batal
             $table->text('keterangan')->nullable();
             $table->foreignId('dibuat_oleh')->constrained('users');
             $table->timestamps();
