@@ -42,6 +42,31 @@
                        class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
                         Kelola Warga
                     </a>
+                    
+                    <a href="{{ route('admin.pengumuman.index') }}"
+                       class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                        Kelola Pengumuman
+                    </a>
+
+                    <a href="{{ route('admin.kegiatan.index') }}"
+                       class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+                        Kelola Kegiatan
+                    </a>
+
+                    <a href="{{ route('admin.jenis-iuran.index') }}"
+                       class="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700">
+                        Master Iuran
+                    </a>
+
+                    <a href="{{ route('admin.tagihan-iuran.index') }}"
+                       class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700">
+                        Kelola Tagihan
+                    </a>
+
+                    <a href="{{ route('admin.laporan.index') }}"
+                       class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-bold shadow-md">
+                        Statistik Laporan
+                    </a>
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
