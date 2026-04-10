@@ -56,4 +56,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+    
+    // Fallback for accidental GET logout
+    Route::get('logout', function () {
+        return redirect()->route('login');
+    });
 });
