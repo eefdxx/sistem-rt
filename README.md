@@ -2,99 +2,81 @@
 
 Selamat datang di repositori **Sistem RT**! Aplikasi ini telah bertransformasi menjadi platform manajemen lingkungan Rukun Tetangga (RT) yang modern, elegan, dan fungsional. 
 
-Dibuat dengan **Laravel 12** dan **Tailwind CSS**, sistem ini menawarkan pengalaman pengguna (UX) setara dengan aplikasi SaaS profesional.
+Dibuat dengan **Laravel 12** dan **Tailwind CSS**, sistem ini menawarkan pengalaman pengguna (UX) setara dengan aplikasi SaaS profesional. Project ini telah melalui fase restorasi dan optimasi besar-besaran untuk mencapai standar kualitas tinggi.
 
 ---
 
-## 🌟 Dashboard Preview (Highlight)
-- **Admin Panel**: Dashboard analitik yang menampilkan statistik kependudukan, agenda aktif, dan ringkasan kas RT dalam satu layar.
-- **Warga Portal**: Pusat informasi warga untuk melihat pengumuman terbaru, jadwal gotong royong, dan memantau kewajiban iuran secara transparan.
+## 🛠️ Update Restorasi & UI/UX Terbaru (April 2026)
+Sebagai bagian dari pembaruan besar, berikut adalah pencapaian teknis dan visual yang telah diimplementasikan:
+
+### 1. 🔐 Portal Autentikasi Modern (Elite Onboarding)
+- **Premium Login & Register**: Perombakan total halaman masuk dan daftar dengan layout *split-screen* yang mewah.
+- **Visual Kustom**: Integrasi ilustrasi 3D kustom (dikelola secara lokal di `public/assets/images`) untuk memberikan identitas visual yang kuat.
+- **Tipografi Outfit**: Penggunaan font **Outfit** untuk memberikan kesan modern, bersih, dan profesional.
+
+### 2. 👥 Manajemen Kependudukan & Performa
+- **Optimasi Query**: Implementasi *targeted field selection* dan *eager loading* pada modul **Warga** dan **Keluarga** untuk memastikan kecepatan akses meskipun data berjumlah besar.
+- **Revamp Table & Form**: Seluruh komponen tabel dan formulir kependudukan telah didesain ulang dengan gaya *Premium SaaS* (Soft shadows, Glassmorphism).
+
+### 3. 📢 Restorasi Modul Utama (Back from the Void)
+Sistem telah memulihkan fungsionalitas penuh yang sebelumnya hilang akibat konflik merge:
+- **Modul Pengumuman**: Pengelolaan diseminasi berita (RT-wide) dengan status Draft/Publish.
+- **Modul Kegiatan**: Penjadwalan agenda warga, rapat, dan gotong royong terintegrasi.
+- **Modul Keuangan (Iuran)**: Manajemen tagihan iuran bulanan dan pelacakan status pembayaran warga.
+
+### 4. 📊 Audit & Laporan
+- **Dashboard Eksekutif**: Ringkasan statistik kependudukan dan kesehatan kas RT yang tersaji secara visual dan intuitif.
 
 ---
 
-## 🚀 Fitur yang Sudah Selesai (Ready to Use)
-
-### 1. 🔐 Autentikasi & Multi-Role
-- Sistem login terintegrasi menggunakan **Laravel Breeze**.
-- Pembatasan akses ketat berdasarkan peran (**Admin** vs **Warga**) menggunakan middleware khusus.
-- Pengalihan dashboard otomatis cerdas berdasarkan hak akses pengguna.
-
-### 2. 👥 Manajemen Kependudukan (Master Data)
-- **Modul Keluarga**: Pengelolaan data Kartu Keluarga (KK) dengan validasi data yang presisi.
-- **Modul Warga**: Data detail personal warga yang terhubung otomatis dengan basis data keluarga.
-- **Relasi Kepala Keluarga**: Sistem pintar yang memetakan Kepala Keluarga secara otomatis di tabel kependudukan.
-
-### 3. 📢 Komunikasi & Koordinasi
-- **Papan Pengumuman**: Admin dapat menerbitkan pengumuman (Draft/Publish). Warga mendapatkan ringkasan pengumuman terbaru di halaman utama.
-- **Agenda Kegiatan**: Penjadwalan aktivitas lingkungan (Rapat, Kerja Bakti) lengkap dengan detail lokasi, waktu, dan status kegiatan mendasar.
-
-### 4. 💰 Pengelolaan Keuangan (Iuran)
-- **Master Jenis Iuran**: Fleksibilitas menentukan kategori iuran (Wajib, Sukarela, dll).
-- **Sistem Penagihan**: Pembuatan tagihan per warga secara massal atau individu.
-- **Konfirmasi Pembayaran**: Pencatatan pembayaran tunai/manual oleh bendahara dengan status *real-time* (Belum lunas, Proses, Lunas).
-
-### 5. 📊 Audit & Laporan (Statistik)
-- **Visualisasi Data**: Rekapitulasi jumlah warga per gender, total keluarga, dan kesehatan keuangan RT.
-- **Dashboard Analitik**: Grafik mental yang memudahkan pengurus melihat "siapa yang belum bayar" dan "berapa saldo kas masuk".
-
-### 6. ✨ UI/UX Revamp (Premium Look)
-- Berbasis **Tailwind CSS** dengan estetika *Glassmorphism* dan *Soft Shadows*.
-- Responsif di berbagai perangkat (Mobile & Desktop).
-- Interaksi UI yang halus dan tipografi modern (*Inter* & *Outfit* fonts).
+## 🚀 Fitur Utama
+- **Multi-Role Access**: Pemisahan otoritas yang ketat antara Admin RT dan Warga.
+- **Mobile Responsive**: Akses lancar melalui smartphone, tablet, maupun desktop.
+- **Performance Focused**: Kode yang dioptimalkan untuk respons cepat.
 
 ---
 
-## 🏗️ Struktur Sistem (Technical Info)
-
-- **Backend Logic**: Semua logika dashboard dikelola terpusat di `DashboardController.php` untuk performa navigasi yang cepat.
-- **Routing**: Jalur URL yang rapi (`/admin` dan `/warga`) dengan proteksi middleware berlapis.
-- **Database Architecture**: Perancangan skema DB yang ternormalisasi untuk menjamin integritas data (Foreign Key & Soft Deletes).
-
----
-
-## 🚧 Agenda Masa Depan (To-Do / Roadmap)
-- [ ] **Payment Gateway Integration**: Automasi pembayaran via Midtrans/Xendit (e-Wallet, VA).
-- [ ] **Laporan Ekspor**: Fitur download laporan bulanan dalam format PDF atau Excel.
-- [ ] **Sistem Notifikasi**: Pengiriman pengumuman via WhatsApp API atau Email secara otomatis.
-- [ ] **Profil Mandiri Warga**: Fitur bagi warga untuk mengedit foto profil dan data kontak sendiri.
-- [ ] **Environment Report**: Modul pelaporan kerusakan fasilitas umum atau gangguan keamanan.
+## 🏗️ Technical Stack
+- **Framework**: Laravel 12
+- **Styling**: Tailwind CSS
+- **Design Methodology**: Glassmorphism, Sophisticated Gradients, Modern Typography.
 
 ---
 
-## 🛠️ Panduan Menjalankan Project
-
-1. **Clone & Install**:
-   ```bash
-   git clone [URL_REPO_ANDA]
-   composer install
-   npm install
-   ```
-
-2. **Setup Env**:
-   - Salin `.env.example` ke `.env`
-   - Sesuaikan `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`.
-
-3. **Database Migration & Seed**:
-   ```bash
-   php artisan key:generate
-   php artisan migrate
-   php artisan db:seed --class=RoleSeeder
-   php artisan db:seed --class=AdminUserSeeder
-   php artisan db:seed --class=DemoWargaSeeder
-   ```
-
-4. **Run Application**:
-   - Jalankan `php artisan serve` di satu jendela terminal.
-   - Jalankan `npm run dev` di jendela terminal lainnya.
+## 🛠️ Panduan Instalasi Cepat
+1. Clone repositori ini.
+2. Jalankan `composer install` & `npm install`.
+3. Setup `.env` (Database & App Key).
+4. Jalankan migrasi: `php artisan migrate`.
+5. Jalankan seeders: `php artisan db:seed`.
+6. Akses aplikasi: `php artisan serve` & `npm run dev`.
 
 ---
 
-## 👤 Akun Percobaan (Demo)
-| Role | Email | Password |
-| :--- | :--- | :--- |
-| **Admin** | `admin@gmail.com` | `admin12345` |
-| **Warga** | `warga@gmail.com` | `warga12345` |
+## 📜 Riwayat Pengembangan (Development History)
+Perjalanan transformasi Sistem RT dari sebuah prototipe sederhana hingga menjadi platform premium yang fungsional:
+
+### 🕒 Tahap 1: Inisiasi & Prototipe (5 April 2026)
+- **Kick-off**: Inisiasi struktur dasar Laravel dan boilerplate sistem informasi.
+- **Konsep Awal**: Pembuatan modul Kependudukan dasar dan simulasi dasbor warga dalam Bahasa Indonesia.
+- **Role-based Access**: Implementasi awal sistem peran (Admin vs Warga) untuk memisahkan wewenang akses.
+
+### 🕒 Tahap 2: Penguatan Basis Data & Validasi (7 April 2026)
+- **Normalisasi DB**: Pemetaan relasi yang lebih presisi antara tabel Warga dan Keluarga.
+- **Relasi Kepala Keluarga**: Pengembangan logika otomatis untuk menentukan kepala keluarga dalam database.
+- **Dashboard Warga**: Perbaikan error pada view dashboard dan penyempurnaan alur login.
+
+### 🕒 Tahap 3: Restorasi & Optimasi Masal (10 April 2026)
+- **Resolusi Konflik**: Penanganan konflik merge besar yang sempat menghilangkan beberapa kontroler inti.
+- **Restorasi Modul**: Membangun kembali modul Pengumuman, Kegiatan, Iuran, dan Laporan yang hilang akibat konflik.
+- **Optimasi Performa**: Refactoring query database untuk menangani load data yang lambat (Targeted field selection & Eager Loading).
+- **Maintenance**: Perbaikan warning pada rute sistem dan pengorganisasian kode yang lebih bersih.
+
+### 🕒 Tahap 4: Premium UI/UX Transformation (10 April 2026 - Sekarang)
+- **Elite Auth Portal**: Redesain total halaman Login dan Register dengan estetika *Premium SaaS* dan ilustrasi 3D kustom.
+- **Modern Look & Feel**: Implementasi bahasa desain modern (Glassmorphism, Outfit font, Sophisticated Gradients) ke seluruh modul aplikasi.
+- **Asset Portability**: Migrasi seluruh aset visual ke direktori publik lokal untuk menjamin kemandirian sistem tanpa ketergantungan file eksternal.
 
 ---
 
-&copy; 2026 **Sistem Manajemen RT**. Dibangun dengan penuh semangat untuk kemajuan lingkungan! 🇮🇩
+&copy; 2026 **Sistem Manajemen Lingkungan Digital**. Dibangun untuk masa depan komunitas yang lebih baik. 🇮🇩

@@ -20,7 +20,7 @@ class KeluargaController extends Controller
 
     public function create()
     {
-        $wargas = Warga::orderBy('nama_lengkap')->get();
+        $wargas = Warga::select('id', 'nama_lengkap')->orderBy('nama_lengkap')->get();
 
         return view('admin.keluarga.create', compact('wargas'));
     }
@@ -41,7 +41,7 @@ class KeluargaController extends Controller
 
     public function edit(Keluarga $keluarga)
     {
-        $wargas = Warga::orderBy('nama_lengkap')->get();
+        $wargas = Warga::select('id', 'nama_lengkap')->orderBy('nama_lengkap')->get();
 
         return view('admin.keluarga.edit', compact('keluarga', 'wargas'));
     }

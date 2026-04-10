@@ -21,8 +21,8 @@ class WargaController extends Controller
 
     public function create()
     {
-        $keluargas = Keluarga::orderBy('no_kk')->get();
-        $users = User::orderBy('name')->get();
+        $keluargas = Keluarga::select('id', 'no_kk')->orderBy('no_kk')->get();
+        $users = User::select('id', 'name')->orderBy('name')->get();
 
         return view('admin.warga.create', compact('keluargas', 'users'));
     }
@@ -50,8 +50,8 @@ class WargaController extends Controller
 
     public function edit(Warga $warga)
     {
-        $keluargas = Keluarga::orderBy('no_kk')->get();
-        $users = User::orderBy('name')->get();
+        $keluargas = Keluarga::select('id', 'no_kk')->orderBy('no_kk')->get();
+        $users = User::select('id', 'name')->orderBy('name')->get();
 
         return view('admin.warga.edit', compact('warga', 'keluargas', 'users'));
     }
