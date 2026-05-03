@@ -34,10 +34,10 @@
                     <p class="text-slate-500 font-medium mt-1">Definisikan jenis-jenis iuran rutin maupun insidental untuk warga.</p>
                 </div>
                 <!-- Button to trigger modal potentially, or just a new page -->
-                <button onclick="alert('Fitur tambah jenis iuran sedangan disiapkan.')" class="px-6 py-3 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all text-sm shadow-xl shadow-indigo-600/20 flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                <a href="{{ route('admin.jenis-iuran.create') }}" class="px-6 py-3 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all text-sm shadow-xl shadow-indigo-600/20 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                     Tambah Jenis Iuran
-                </button>
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

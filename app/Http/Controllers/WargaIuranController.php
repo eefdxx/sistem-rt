@@ -9,12 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class WargaIuranController extends Controller
 {
+    /**
+     * Daftar semua tagihan milik warga yang login.
+     */
     public function index()
     {
         $warga = Auth::user()->warga;
 
         if (!$warga) {
-            return redirect()->route('dashboard')->with('error', 'Profil warga tidak ditemukan. Hubungi Admin.');
+            return redirect()->route('dashboard')
+                ->with('error', 'Profil warga tidak ditemukan. Hubungi Admin.');
         }
 
         $tagihans = TagihanIuran::with('jenisIuran')
@@ -25,28 +29,61 @@ class WargaIuranController extends Controller
         return view('warga.iuran.index', compact('tagihans'));
     }
 
+    /**
+     * Detail tagihan + form upload bukti bayar.
+     */
+    public function show(TagihanIuran $tagihan)
+    {
+        $warga = Auth::user()->warga;
+
+        // Pastikan tagihan ini memang milik warga yang login
+        if (!$warga || $tagihan->warga_id !== $warga->id) {
+            abort(403, 'Akses ditolak.');
+        }
+
+        $tagihan->load(['jenisIuran', 'pembayaran']);
+
+        return view('warga.iuran.show', compact('tagihan'));
+    }
+
+    /**
+     * Proses upload bukti pembayaran oleh warga.
+     */
     public function pay(Request $request, TagihanIuran $tagihan)
     {
-        // Fitur pembayaran mandiri oleh warga (simulasi upload bukti)
+        $warga = Auth::user()->warga;
+
+        if (!$warga || $tagihan->warga_id !== $warga->id) {
+            abort(403, 'Akses ditolak.');
+        }
+
+        // Jangan izinkan bayar ulang jika sudah proses atau lunas
+        if (in_array($tagihan->status_pembayaran, ['proses_verifikasi', 'lunas'])) {
+            return redirect()->back()
+                ->with('error', 'Tagihan ini sedang dalam proses verifikasi atau sudah lunas.');
+        }
+
         $validated = $request->validate([
-            'bukti_pembayaran' => 'required|image|max:2048',
-            'metode_pembayaran' => 'required|string',
+            'bukti_pembayaran' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'metode_pembayaran'=> 'required|string|in:transfer,tunai,qris',
         ]);
 
         $path = $request->file('bukti_pembayaran')->store('pembayaran', 'public');
 
         PembayaranIuran::create([
-            'tagihan_iuran_id' => $tagihan->id,
-            'warga_id' => Auth::user()->warga->id,
-            'tanggal_bayar' => now(),
-            'jumlah_bayar' => $tagihan->nominal,
+            'tagihan_iuran_id'  => $tagihan->id,
+            'warga_id'          => $warga->id,
+            'tanggal_bayar'     => now(),
+            'jumlah_bayar'      => $tagihan->nominal_tagihan,
             'metode_pembayaran' => $request->metode_pembayaran,
-            'bukti_pembayaran' => $path,
+            'bukti_pembayaran'  => $path,
             'status_verifikasi' => 'menunggu',
         ]);
 
-        $tagihan->update(['status' => 'proses']);
+        // Ubah status tagihan menjadi 'proses' (menunggu verifikasi admin)
+        $tagihan->update(['status_pembayaran' => 'proses_verifikasi']);
 
-        return redirect()->back()->with('success', 'Bukti pembayaran berhasil diunggah. Menunggu verifikasi Admin.');
+        return redirect()->route('warga.iuran.index')
+            ->with('success', 'Bukti pembayaran berhasil diunggah. Menunggu verifikasi Admin.');
     }
 }

@@ -33,10 +33,13 @@
                     <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Tagihan & Pembayaran</h1>
                     <p class="text-slate-500 font-medium mt-1">Pantau status pembayaran iuran warga dan verifikasi bukti bayar.</p>
                 </div>
-                <button onclick="alert('Fitur generate tagihan masal sedang disiapkan.')" class="px-6 py-3 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all text-sm shadow-xl shadow-indigo-600/20 flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                    Generate Tagihan Bulanan
-                </button>
+                <form action="{{ route('admin.tagihan-iuran.generate') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin membuat tagihan masal untuk seluruh warga aktif bulan ini?');">
+                    @csrf
+                    <button type="submit" class="px-6 py-3 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all text-sm shadow-xl shadow-indigo-600/20 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                        Generate Tagihan Bulanan
+                    </button>
+                </form>
             </div>
 
             <div class="bg-white rounded-[2rem] border border-slate-200/60 shadow-xl overflow-hidden">
@@ -67,16 +70,16 @@
                                     <span class="text-sm font-medium text-slate-600">{{ $t->jenisIuran->nama_iuran }}</span>
                                 </td>
                                 <td class="px-6 py-5">
-                                    <span class="text-sm font-black text-indigo-600 font-mono">Rp{{ number_format($t->nominal, 0, ',', '.') }}</span>
+                                    <span class="text-sm font-black text-indigo-600 font-mono">Rp{{ number_format($t->nominal_tagihan, 0, ',', '.') }}</span>
                                 </td>
                                 <td class="px-6 py-5">
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest 
-                                        {{ $t->status === 'lunas' ? 'bg-emerald-100 text-emerald-700' : ($t->status === 'proses' ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700') }}">
-                                        {{ $t->status }}
+                                        {{ $t->status_pembayaran === 'lunas' ? 'bg-emerald-100 text-emerald-700' : ($t->status_pembayaran === 'proses_verifikasi' ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700') }}">
+                                        {{ str_replace('_', ' ', $t->status_pembayaran) }}
                                     </span>
                                 </td>
                                 <td class="px-6 py-5 text-right">
-                                    <a href="{{ route('admin.tagihan-iuran.show', $t->id) }}" class="px-4 py-2 rounded-xl bg-slate-50 text-slate-600 font-bold text-xs hover:bg-slate-900 hover:text-white transition-all">Verifikasi</a>
+                                    <a href="{{ route('admin.tagihan-iuran.show', $t->id) }}" class="px-4 py-2 rounded-xl bg-slate-50 text-slate-600 font-bold text-xs hover:bg-indigo-600 hover:text-white transition-all">Detail</a>
                                 </td>
                             </tr>
                             @empty

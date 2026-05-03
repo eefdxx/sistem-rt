@@ -15,7 +15,6 @@ class TanggapanLaporan extends Model
         'laporan_id',
         'user_id',
         'isi_tanggapan',
-        'status_setelah_tanggapan',
     ];
 
     public function laporan()
